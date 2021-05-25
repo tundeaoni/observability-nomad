@@ -84,7 +84,11 @@ EOTC
       service {
         name = "grafana"
         port = "http"
-        tags = ["monitoring"]
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.grafana.rule=Host(`grafana.nomad-test.remerge.io`)",
+          "traefik.frontend.entryPoints=http"
+        ]
 
         check {
           name     = "Grafana HTTP"

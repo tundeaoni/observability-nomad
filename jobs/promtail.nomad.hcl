@@ -89,7 +89,11 @@ EOTC
       service {
         name = "promtail"
         port = "http"
-        tags = ["monitoring"]
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.promtail.rule=Host(`promtail.nomad-test.remerge.io`)",
+          "traefik.frontend.entryPoints=http"
+        ]
 
         check {
           name     = "Promtail HTTP"

@@ -76,7 +76,12 @@ job "tns" {
       service {
         name = "app"
         port = "app"
-        tags = ["app"]
+        tags = [
+          "app",
+          "traefik.enable=true",
+          "traefik.http.routers.app.rule=Host(`app.nomad-test.remerge.io`)",
+          "traefik.frontend.entryPoints=http"
+        ]
       }
     }
 

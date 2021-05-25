@@ -47,7 +47,11 @@ job "loki" {
       service {
         name = "loki"
         port = "http"
-        tags = ["monitoring"]
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.loki.rule=Host(`loki.nomad-test.remerge.io`)",
+          "traefik.frontend.entryPoints=http"
+        ]
 
         check {
           name     = "Loki HTTP"

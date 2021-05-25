@@ -70,7 +70,11 @@ EOTC
       service {
         name = "prometheus"
         port = "http"
-        tags = ["monitoring"]
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.prometheus.rule=Host(`prometheus.nomad-test.remerge.io`)",
+          "traefik.frontend.entryPoints=http"
+        ]
 
         check {
           name     = "prometheus HTTP"

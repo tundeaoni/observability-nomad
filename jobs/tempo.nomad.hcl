@@ -55,7 +55,11 @@ job "tempo" {
       service {
         name = "tempo"
         port = "tempo"
-        tags = ["monitoring"]
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.tempo.rule=Host(`tempo.nomad-test.remerge.io`)",
+          "traefik.frontend.entryPoints=http"
+        ]
 
         check {
           name     = "Tempo HTTP"

@@ -10,4 +10,4 @@ endif
 
 
 install:
-	find jobs/*.hcl -maxdepth 0 | xargs -L 1 nomad job run
+	find jobs/*.hcl -maxdepth 0 | xargs -L 1 nomad job run  -address=http://34.91.107.183:4646/
